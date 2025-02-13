@@ -1,0 +1,14 @@
+<odoo>
+    <data>
+        <record id="view_stock_move_form_inherit_custom_field" model="ir.ui.view">
+            <field name="name">stock.move.form.inherit.custom.field</field>
+            <field name="model">stock.move</field>
+            <field name="inherit_id" ref="stock.view_move_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='location_id']" position="before">
+                    <field name="custom_field" readonly="1"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
