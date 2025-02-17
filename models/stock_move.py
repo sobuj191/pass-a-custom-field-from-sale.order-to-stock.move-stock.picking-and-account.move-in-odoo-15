@@ -7,16 +7,19 @@ class StockMove(models.Model):
     comment = fields.Char(string='Comment')
     def _get_new_picking_values(self):
         res = super(StockMove, self)._get_new_picking_values()
-        res["custom_field"] = self.custom_field
+        res["custom_field"] = self.group_id.sale_id.custom_field
 
         return res
-    def _prepare_procurement_values(self):
-        remark = "kdios"
-        res = super(StockMove, self)._prepare_procurement_values()
-        res['custom_field'] = self.custom_field
-        res.update({'comment': remark})
-        print("*" * 50, res)
-        return res
+
+    # def _prepare_procurement_values(self):
+    #     remark = "kdios"
+    #     res = super(StockMove, self)._prepare_procurement_values()
+    #     res['custom_field'] = self.custom_field
+    #     res.update({'comment': remark})
+    #     print("*" * 50, res)
+    #     return res
+
+    #------------------------------------
 
     # def _action_confirm(self):
     #     res = super(StockMove, self)._action_confirm()
